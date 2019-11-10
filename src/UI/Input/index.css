@@ -1,0 +1,11 @@
+.ui-input-form {
+	width: 100%;
+}
+.ui-input-form > input {
+	width: 100%;
+	outline: none;
+	border: none;
+	font-size: 17px;
+	line-height: 20px;
+	padding: 20px 14px;
+}

@@ -1,1 +1,5 @@
-types.js
+const GET_MATERIAL = "GET_MATERIAL";
+
+export {
+	GET_MATERIAL
+}
