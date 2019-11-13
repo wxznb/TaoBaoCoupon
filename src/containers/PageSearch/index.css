@@ -18,9 +18,17 @@
 	padding: 20px 14px;
 }
 
-.search-result {
+.search-results {
 	overflow-x: hidden;
 	overflow-y: auto;
 	min-height: 0;
 	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+.search-result {
+	width: 20%;
 }

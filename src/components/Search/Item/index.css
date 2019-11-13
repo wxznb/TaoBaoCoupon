@@ -1,0 +1,62 @@
+.search-item {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.search-item-images {
+	padding: 1%;
+}
+.search-item-pict-url {
+	width: 100%;
+	padding: 0 0 1% 0;
+}
+.search-item-small-images {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+.search-item-small-image {
+	width: 33%;
+	margin: 0 0.5% 0 0;
+}
+.search-item-small-image:last-child {
+	margin: 0;
+}
+
+.search-item-coupon-info {
+	padding: 0.5% 1% 1% 1%;
+}
+.search-item-coupon-info > div {
+	padding: 5px 0 0 0;
+}
+.search-item-title {
+	color: black;
+	font-size: 20px;
+	line-height: 24px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.search-item-coupon-info-and-time {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.search-item-price {
+	display: flex;
+	flex-direction: row;
+}
+.search-item-reserve-price {
+	text-decoration: line-through;
+	padding: 0 0 0 5px;
+}
+.search-item-zk-final-price {
+	padding: 0 0 0 5px;
+}
+
+.search-item-provcity-and-shop-title {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}

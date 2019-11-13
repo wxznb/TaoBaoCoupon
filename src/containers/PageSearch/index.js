@@ -18,7 +18,84 @@ class PageSearch extends Component {
 		super ( props );
 
 		this.state = {
-			searchText: ""
+			searchText: "",
+			searchResults: [{
+				pict_url: "https://img.alicdn.com/bao/uploaded/i4/745957850/TB1WzSRmV9gSKJjSspbXXbeNXXa_!!0-item_pic.jpg",
+				title: "毛呢阔腿裤港味复古女裤子秋冬九分裤萝卜裤显瘦高腰韩版2017新款",
+				small_images: [
+				    "	https://img.alicdn.com/i4/3077291146/TB2NA3poDnI8KJjSszgXXc8ApXa_!!3077291146.jpg"
+				],
+				coupon_start_time: "2017-10-29",
+				coupon_end_time: "2017-10-29",
+				reserve_price: "102.00",
+				zk_final_price: "88.00",
+				provcity: "杭州",
+				user_type: 1,
+				item_url: "https://item.taobao.com/item.htm?id=564591813536",
+				coupon_info: "满299元减20元",
+				shop_title: "xx旗舰店",
+				coupon_share_url: "uland.xxx",
+				item_description: "季凉被 全棉亲肤",
+				real_post_fee: "0.00",
+				tmall_play_activity_info: "前n件x折"
+			}, {
+				pict_url: "https://img.alicdn.com/bao/uploaded/i4/745957850/TB1WzSRmV9gSKJjSspbXXbeNXXa_!!0-item_pic.jpg",
+				title: "毛呢阔腿裤港味复古女裤子秋冬九分裤萝卜裤显瘦高腰韩版2017新款",
+				small_images: [
+				    "	https://img.alicdn.com/i4/3077291146/TB2NA3poDnI8KJjSszgXXc8ApXa_!!3077291146.jpg"
+				],
+				coupon_start_time: "2017-10-29",
+				coupon_end_time: "2017-10-29",
+				reserve_price: "102.00",
+				zk_final_price: "88.00",
+				provcity: "杭州",
+				user_type: 1,
+				item_url: "https://item.taobao.com/item.htm?id=564591813536",
+				coupon_info: "满299元减20元",
+				shop_title: "xx旗舰店",
+				coupon_share_url: "uland.xxx",
+				item_description: "季凉被 全棉亲肤",
+				real_post_fee: "0.00",
+				tmall_play_activity_info: "前n件x折"
+			}, {
+				pict_url: "https://img.alicdn.com/bao/uploaded/i4/745957850/TB1WzSRmV9gSKJjSspbXXbeNXXa_!!0-item_pic.jpg",
+				title: "毛呢阔腿裤港味复古女裤子秋冬九分裤萝卜裤显瘦高腰韩版2017新款",
+				small_images: [
+				    "	https://img.alicdn.com/i4/3077291146/TB2NA3poDnI8KJjSszgXXc8ApXa_!!3077291146.jpg"
+				],
+				coupon_start_time: "2017-10-29",
+				coupon_end_time: "2017-10-29",
+				reserve_price: "102.00",
+				zk_final_price: "88.00",
+				provcity: "杭州",
+				user_type: 1,
+				item_url: "https://item.taobao.com/item.htm?id=564591813536",
+				coupon_info: "满299元减20元",
+				shop_title: "xx旗舰店",
+				coupon_share_url: "uland.xxx",
+				item_description: "季凉被 全棉亲肤",
+				real_post_fee: "0.00",
+				tmall_play_activity_info: "前n件x折"
+			}, {
+				pict_url: "https://img.alicdn.com/bao/uploaded/i4/745957850/TB1WzSRmV9gSKJjSspbXXbeNXXa_!!0-item_pic.jpg",
+				title: "毛呢阔腿裤港味复古女裤子秋冬九分裤萝卜裤显瘦高腰韩版2017新款",
+				small_images: [
+				    "	https://img.alicdn.com/i4/3077291146/TB2NA3poDnI8KJjSszgXXc8ApXa_!!3077291146.jpg"
+				],
+				coupon_start_time: "2017-10-29",
+				coupon_end_time: "2017-10-29",
+				reserve_price: "102.00",
+				zk_final_price: "88.00",
+				provcity: "杭州",
+				user_type: 1,
+				item_url: "https://item.taobao.com/item.htm?id=564591813536",
+				coupon_info: "满299元减20元",
+				shop_title: "xx旗舰店",
+				coupon_share_url: "uland.xxx",
+				item_description: "季凉被 全棉亲肤",
+				real_post_fee: "0.00",
+				tmall_play_activity_info: "前n件x折"
+			}]
 		};
 
 		this.onInput = this.onInput.bind(this);
@@ -44,16 +121,26 @@ class PageSearch extends Component {
 
 		dispatch(GetMaterial(searchText));
 	}
-	SearchItems () {
+	SearchItems ( results ) {
 		let items = [];
 
-		for ( let i = 0; i < 4; i ++ ) {
-			items.push(<SearchItem key = { `search-item-${i}` } />);
-		}
+		results.forEach( ( result, index ) => {
+			items.push(<div
+				className = "search-result"
+				key = { `search-item-${index}` } >
+				<SearchItem 
+					item = { result }
+					/>
+			</div>);
+		});
 
 		return items;
 	}
 	render () {
+		let {
+			searchResults
+		} = this.state;
+
 		return <div
 		    className = "search-page">
 		    <div
@@ -68,8 +155,8 @@ class PageSearch extends Component {
 				</div>
 			</div>
 			<div
-			    className = "search-result">
-			    { this.SearchItems() }
+			    className = "search-results">
+			    { this.SearchItems(searchResults) }
 			</div>
 		</div>;
 	}

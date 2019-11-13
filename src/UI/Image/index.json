@@ -1,0 +1,19 @@
+{
+	"name": "Image",
+	"description": "图片",
+	"author": "sarusama <ld839183343@163.com>",
+	"props": {
+		"src": {
+			"type": "string",
+			"description": "图片链接"
+		},
+		"onLoad": {
+			"type": "function",
+			"description": "加载完会调用的函数"
+		},
+		"onError": {
+			"type": "function",
+			"description": "加载错误时会调用的函数"
+		}
+	}
+}
