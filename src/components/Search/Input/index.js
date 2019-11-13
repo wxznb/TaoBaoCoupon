@@ -15,11 +15,14 @@ class SearchInput extends Component {
 		this.onChange = this.onChange.bind(this);
 	}
 	onInput ( event ) {
-		console.log("event: ", event);
-		this.props.onInput( event );
+		if ( !!this.props.onInput ) {
+			this.props.onInput( event );
+		}
 	}
 	onChange ( event ) {
-		this.props.onChange( event );
+		if ( !!this.props.onChange ) {
+			this.props.onChange( event );
+		}
 	}
 	render () {
 		return <Input
