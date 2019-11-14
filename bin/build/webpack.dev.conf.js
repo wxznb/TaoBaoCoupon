@@ -10,5 +10,10 @@ module.exports = merge(baseConfig, {
         host: config.dev.host,
         port: config.dev.port,
         contentBase: path.join(__dirname, "../../public")
+    },
+    output: {
+        path: config.build.assetsRoot,
+        filename: "[name].js",
+        publicPath: config.dev.assetsPublicPath
     }
 });
