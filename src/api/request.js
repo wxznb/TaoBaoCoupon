@@ -29,18 +29,12 @@ function get ( url, params, options = {} ) {
 			sign: signString
 		});
 
-		let paramsString = "";
-
-		for ( let item in params ) {
-			paramsString = `${paramsString}${!!paramsString ? "&" : ""}${item}=${params[item]}`;
-		}
-
 		axios({
 			method: "get",
-			url: `${url}?${paramsString}`,
-			headers: {
-				"Access-Control-Allow-Origin": "*"
-			}
+			url,
+			params,
+			crossOrigin: true,
+		    withCredentials: false
 		}).then((responce) => {
 			resolve(responce);
 		}).catch((error) => {
@@ -54,15 +48,28 @@ function get ( url, params, options = {} ) {
  * @param { {} } body
  * @param { {} } options
  */
-function post ( url, body, options = {} ) {
+function post ( url, params, body, options = {} ) {
 	return new Promise(( resolve, reject ) => {
+		params = Object.assign(params, {
+			timestamp: new Date().toJSON().replace("T", " ").split(".")[0],
+			...configInfo
+		});
+
+		let signString = sign({
+			...params
+		}, app_secret);
+
+		params = Object.assign(params, {
+			sign: signString
+		});
+
 		axios({
 			method: "post",
-			url: url,
+			url,
+			params,
 			data: body,
-			headers: {
-				"Access-Control-Allow-Origin": "*"
-			}
+			crossOrigin: true,
+		    withCredentials: false
 		}).then(( responce ) => {
 			resolve(responce);
 		}).catch(( error ) => {

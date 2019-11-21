@@ -10,10 +10,10 @@ const getMaterial = data => ({
 
 const GetMaterial = ( queryValue ) => dispatch => {
 	return new Promise(( resolve, reject ) => {
-		http.get(`http://gw.api.taobao.com/router/rest`, {
+		http.post(`http://gw.api.taobao.com/router/rest`, {
 			method: "taobao.tbk.dg.material.optional",
 			q: queryValue
-		})
+		});
 	});
 }
 

@@ -10,7 +10,9 @@ module.exports = {
         assetsPublicPath: "/",
         host: "0.0.0.0",
         port: 2663,
-        autoOpenBrowser: false
+        autoOpenBrowser: false,
+        assetsRoot: resolve("public"),
+        htmlPath: "public/index.html"
     },
     build: {
         index: resolve("dist/index.html"),

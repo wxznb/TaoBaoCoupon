@@ -5,6 +5,9 @@ const config = require("../config");
 const merge = require("webpack-merge");
 const baseWebpackConfig = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const {
+	CleanWebpackPlugin
+} = require("clean-webpack-plugin");
 
 const webpackConfig = merge(baseWebpackConfig, {
 	mode: "production",
@@ -21,7 +24,8 @@ const webpackConfig = merge(baseWebpackConfig, {
 	    	minify: {
 	    		removeComments: true
 	    	}
-	    })
+	    }),
+	    new CleanWebpackPlugin()
 	]
 });
 
