@@ -50,8 +50,18 @@ class SearchItem extends Component {
 			coupon_share_url,
 			item_description,
 			real_post_fee,
-			tmall_play_activity_info
+			tmall_play_activity_info,
+			coupon_start_fee,
+			coupon_amount
 		} = item;
+
+		let share_url = `https:${coupon_share_url}`;
+		let zk_price = zk_final_price;
+
+		if ( !!coupon_start_fee &&
+			zk_price >= coupon_start_fee ) {
+			zk_price = zk_price - coupon_amount;
+		}
 
 		return <div
 		    className = "search-item">
@@ -65,7 +75,7 @@ class SearchItem extends Component {
 	            </div>
 		        <div
 		            className = "search-item-small-images">
-		            { this.smallImages(small_images) }
+		            { this.smallImages(small_images.string) }
 		        </div>
 		    </div>
 		    <div
@@ -82,7 +92,8 @@ class SearchItem extends Component {
 		        <div
 		            className = "search-item-coupon-info-and-time">
 			        <div>{ coupon_info } - { tmall_play_activity_info }</div>
-		            <div>{ coupon_start_time } ~ { coupon_end_time }</div>
+		            <div
+					    className = "effective-date">{ coupon_start_time } ~ { coupon_end_time }</div>
 		        </div>
 		        <div
 		            className = "search-item-price">
@@ -95,9 +106,20 @@ class SearchItem extends Component {
 			            className = "search-item-zk-final-price"> 
 			            { zk_final_price } 
 			        </div>
+					{
+						zk_price !== zk_final_price &&
+						<div
+							className = "search-item-zk-price">
+							{ zk_price }
+						</div>
+					}
 		        </div>
 		        <div>
-		            { coupon_share_url }
+					<a
+					    href = { share_url }
+						target = "_blank">
+						去领优惠券
+					</a>
 		        </div>
 		        <div>邮费：{ real_post_fee }</div>
 		        <div

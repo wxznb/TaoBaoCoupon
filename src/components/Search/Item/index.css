@@ -43,20 +43,43 @@
 	flex-direction: row;
 	justify-content: space-between;
 }
+.effective-date {
+	white-space: nowrap;
+	min-width: 0;
+}
 .search-item-price {
 	display: flex;
 	flex-direction: row;
 }
-.search-item-reserve-price {
-	text-decoration: line-through;
+.search-item-price > div {
 	padding: 0 0 0 5px;
+	text-decoration: line-through
+}
+.search-item-price > div:last-child {
+	text-decoration: unset;
+}
+.search-item-reserve-price {
 }
 .search-item-zk-final-price {
-	padding: 0 0 0 5px;
+}
+.search-item-zk-price {
 }
 
 .search-item-provcity-and-shop-title {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+}
+.search-item-provcity {
+	flex: 2;
+	white-space: nowrap;
+	min-width: 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.search-item-shop-title {
+	flex: 1;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }

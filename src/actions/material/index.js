@@ -10,9 +10,19 @@ const getMaterial = data => ({
 
 const GetMaterial = ( queryValue ) => dispatch => {
 	return new Promise(( resolve, reject ) => {
-		http.post(`http://gw.api.taobao.com/router/rest`, {
-			method: "taobao.tbk.dg.material.optional",
+		http.get(`http://ovoloop.xyz/api/tbk/DgOptimusMaterial`, {
 			q: queryValue
+		}).then( (data) => {
+			console.log("resolve");
+			if ( !!data.data ) {
+				dispatch(getMaterial(data.data));
+				resolve();
+			} else {
+				reject();
+			}
+		}, () => {
+			console.log("reject");
+			reject();
 		});
 	});
 }

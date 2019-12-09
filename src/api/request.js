@@ -3,11 +3,6 @@
  */
 import axios from "axios";
 import sign from "@/api/sign";
-import configInfo from "@/static/configurationInfo";
-
-const app_secret = configInfo["app_secret"];
-
-delete configInfo["app_secret"];
 
 /**
  * @param { string } url
@@ -16,27 +11,15 @@ delete configInfo["app_secret"];
  */
 function get ( url, params, options = {} ) {
 	return new Promise(( resolve, reject ) => {
-		params = Object.assign(params, {
-			timestamp: new Date().toJSON().replace("T", " ").split(".")[0],
-			...configInfo
-		});
-
-		let signString = sign({
-			...params
-		}, app_secret);
-
-		params = Object.assign(params, {
-			sign: signString
-		});
-
 		axios({
 			method: "get",
 			url,
 			params,
 			crossOrigin: true,
 		    withCredentials: false
-		}).then((responce) => {
-			resolve(responce);
+		}).then((response) => {
+			console.log(response);
+			resolve(response.data);
 		}).catch((error) => {
 			reject(error);
 		});
@@ -50,19 +33,6 @@ function get ( url, params, options = {} ) {
  */
 function post ( url, params, body, options = {} ) {
 	return new Promise(( resolve, reject ) => {
-		params = Object.assign(params, {
-			timestamp: new Date().toJSON().replace("T", " ").split(".")[0],
-			...configInfo
-		});
-
-		let signString = sign({
-			...params
-		}, app_secret);
-
-		params = Object.assign(params, {
-			sign: signString
-		});
-
 		axios({
 			method: "post",
 			url,
@@ -70,8 +40,9 @@ function post ( url, params, body, options = {} ) {
 			data: body,
 			crossOrigin: true,
 		    withCredentials: false
-		}).then(( responce ) => {
-			resolve(responce);
+		}).then(( response ) => {
+			console.log(response);
+			resolve(response.data);
 		}).catch(( error ) => {
 			reject(error);
 		});

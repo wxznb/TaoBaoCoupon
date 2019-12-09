@@ -13,6 +13,7 @@ class SearchInput extends Component {
 		this.state = {};
 		this.onInput = this.onInput.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 	}
 	onInput ( event ) {
 		if ( !!this.props.onInput ) {
@@ -24,12 +25,18 @@ class SearchInput extends Component {
 			this.props.onChange( event );
 		}
 	}
+	onSubmit () {
+		if ( !!this.props.onSubmit ) {
+			this.props.onSubmit();
+		}
+	}
 	render () {
 		return <Input
 		    type = "search"
 		    placeholder = "搜索"
 		    onInput = { this.onInput }
-		    onChange = { this.onChange }
+			onChange = { this.onChange }
+			onSubmit = { this.onSubmit }
 		    />
 	}
 }

@@ -19,6 +19,7 @@ class Input extends Component {
 		this.input = this.input.bind(this);
 		this.change = this.change.bind(this);
 		this.click = this.click.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 		// this.touchstart = this.touchstart.bind(this);
 		// this.touchmove = this.touchmove.bind(this);
 		// this.touchend = this.touchend.bind(this);
@@ -49,7 +50,12 @@ class Input extends Component {
 			this.props.onClick( event );
 		}
 	}
-	handleSubmit () {
+	handleSubmit ( event ) {
+		event.preventDefault();
+		if ( !!this.props.onSubmit ) {
+			console.log("submit");
+			this.props.onSubmit();
+		}
 	}
 	// touchstart () {}
 	// touchmove () {}
