@@ -10,7 +10,7 @@ const getMaterial = data => ({
 
 const GetMaterial = ( queryValue ) => dispatch => {
 	return new Promise(( resolve, reject ) => {
-		http.get(`http://ovoloop.xyz/api/tbk/DgOptimusMaterial`, {
+		http.get(`tbk/DgOptimusMaterial`, {
 			q: queryValue
 		}).then( (data) => {
 			console.log("resolve");

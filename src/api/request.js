@@ -13,7 +13,7 @@ function get ( url, params, options = {} ) {
 	return new Promise(( resolve, reject ) => {
 		axios({
 			method: "get",
-			url,
+			url: `${window.location.origin}/api/${url}`,
 			params,
 			crossOrigin: true,
 		    withCredentials: false
@@ -35,7 +35,7 @@ function post ( url, params, body, options = {} ) {
 	return new Promise(( resolve, reject ) => {
 		axios({
 			method: "post",
-			url,
+			url: `${window.location.origin}/api/${url}`,
 			params,
 			data: body,
 			crossOrigin: true,
