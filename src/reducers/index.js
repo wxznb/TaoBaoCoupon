@@ -2,9 +2,11 @@ import {
     combineReducers 
 } from "redux";
 import {
-	GetMaterial
+	GetMaterial,
+	GetTotalResults
 } from "./material";
 
 export default combineReducers({
-	GetMaterial
+	GetMaterial,
+	GetTotalResults
 });

@@ -2,8 +2,8 @@ import React, {
 	Component
 } from "react";
 import {
-	Image
-} from "@/UI";
+	ImageCube
+} from "@/components";
 import "./index.css";
 
 class SearchItem extends Component {
@@ -21,7 +21,7 @@ class SearchItem extends Component {
 			SmallImages.push(<div
 				    className = "search-item-small-image"
 				    key = { image }>
-				    <Image 
+				    <ImageCube 
 				        src = { image }
 				        />
 				</div>);
@@ -69,7 +69,7 @@ class SearchItem extends Component {
 		        className = "search-item-images">
 		        <div
 		            className = "search-item-pict-url">
-			        <Image
+			        <ImageCube
 			            src = { pict_url }
 			            />
 	            </div>

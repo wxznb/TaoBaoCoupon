@@ -18,13 +18,13 @@ class Image extends Component {
 		console.log("loaded");
 		if ( !!this.props.onLoad ) {
 			this.props.onLoad();
-		}
+		} else {}
 	}
 	onError ( event ) {
 		console.log("error");
 		if ( !!this.props.onError ) {
 			this.props.onError();
-		}
+		} else {}
 	}
 	render () {
 		let {
@@ -35,7 +35,7 @@ class Image extends Component {
 		    onLoad = { this.onLoad }
 		    onError = { this.onError }
 		    src = { src }
-		    className = "UI-image"
+		    className = { `UI-image ${this.props.className}` }
 			/>;
 	}
 }

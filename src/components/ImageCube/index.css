@@ -1,0 +1,49 @@
+.components-imagecube {
+    position: relative;
+    width: 100%;
+    padding: 100% 0 0 0;
+    overflow: hidden;
+}
+.components-imagecube-main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+    width: unset;
+}
+.components-imagecube::before {
+    content: " ";
+    background: lightgray;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.components-imagecube::after {
+    content: " ";
+    background: linear-gradient(45deg, #e66465, #9198e5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    animation: backgroundLoading 2s infinite cubic-bezier(0.1, 0.25, 0.25, 0.1);
+}
+
+@keyframes backgroundLoading {
+    0% {
+        transform: translate(-100%, 0);
+    }
+    50% {
+        transform: translate(100%, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
+}

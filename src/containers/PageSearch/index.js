@@ -77,11 +77,14 @@ class PageSearch extends Component {
 	}
 	render () {
 		let {
-			GetMaterial
+			GetMaterial,
+			GetTotalResults
 		} = this.props;
 		let {
 			searchState
 		} = this.state;
+
+		console.log("GetTotalResults: ", GetTotalResults);
 
 		return <div
 		    className = "search-page">
@@ -107,11 +110,13 @@ class PageSearch extends Component {
 
 const mapStatesToProps = ( state ) => {
 	const {
-		GetMaterial
+		GetMaterial,
+		GetTotalResults
 	} = state;
 
 	return {
-		GetMaterial
+		GetMaterial,
+		GetTotalResults
 	};
 };
 

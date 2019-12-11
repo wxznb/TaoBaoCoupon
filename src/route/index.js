@@ -8,7 +8,9 @@ import {
 } from "history";
 import React from "react";
 import {
-    PageSearch
+    PageSearch,
+    UI,
+    Components
 } from "@/containers";
 import "./index.css";
 
@@ -18,8 +20,17 @@ const Routes = () => <Router
     }>
         <Route 
             path = "/"
-            component = { PageSearch }>
-        </Route>
+            exact
+            component = { PageSearch }
+            />
+        <Route
+            path = "/UI"
+            component = { UI }
+            />
+        <Route
+            path = "/Components"
+            component = { Components }
+            />
     </Router>;
 
 export default Routes;
