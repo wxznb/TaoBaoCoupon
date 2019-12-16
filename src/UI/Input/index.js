@@ -70,7 +70,7 @@ class Input extends Component {
 
 		return <form 
 		    onSubmit = { this.handleSubmit }
-		    className = { `UI-input-form ${this.props.className}` }>
+		    className = { `UI-input-form ${!!this.props.className ? this.props.className : ""}` }>
 		    <input
 		        type = { type }
 		        maxLength = { maxLength }
@@ -79,7 +79,8 @@ class Input extends Component {
 		        onFocus = { this.focus }
 		        onInput = { this.input }
 		        onClick = { this.click }
-		        onChange = { this.change }
+				onChange = { this.change }
+				className = "UI-input-input"
 		        />
 		</form>;
 	}

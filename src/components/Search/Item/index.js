@@ -64,7 +64,7 @@ class SearchItem extends Component {
 		}
 
 		return <div
-		    className = "search-item">
+		    className = { `search-item ${ !!this.props.className ? this.props.className : "" }` }>
 		    <div
 		        className = "search-item-images">
 		        <div
@@ -75,7 +75,7 @@ class SearchItem extends Component {
 	            </div>
 		        <div
 		            className = "search-item-small-images">
-		            { this.smallImages(small_images.string) }
+		            { this.smallImages((!!small_images && small_images.string) || []) }
 		        </div>
 		    </div>
 		    <div

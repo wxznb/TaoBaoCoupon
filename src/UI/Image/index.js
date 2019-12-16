@@ -35,7 +35,7 @@ class Image extends Component {
 		    onLoad = { this.onLoad }
 		    onError = { this.onError }
 		    src = { src }
-		    className = { `UI-image ${this.props.className}` }
+		    className = { `UI-image ${!!this.props.className ? this.props.className : ""}` }
 			/>;
 	}
 }

@@ -3,7 +3,8 @@ import React, {
 } from "react";
 import {
 	SearchInput,
-	SearchItem
+	SearchItem,
+	Pagination
 } from "@/components";
 import {
 	connect
@@ -19,12 +20,16 @@ class PageSearch extends Component {
 
 		this.state = {
 			searchText: "",
-			searchState: false
+			searchState: false,
+			defaultState: true,
+			pageLength: 20
 		};
 
 		this.onInput = this.onInput.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.onSearch = this.onSearch.bind(this);
+		this.searchContent = this.searchContent.bind(this);
+		this.onPaginationChange = this.onPaginationChange.bind(this);
 	}
 	onInput ( event ) {
 		// console.log("onInput: ", event);
@@ -35,19 +40,24 @@ class PageSearch extends Component {
 			searchText: event.target.value
 		});
 	}
-	onSearch () {
+	onSearch (page = 1) {
 		const {
 			dispatch
 		} = this.props;
 		let {
-			searchText
+			searchText,
+			searchState
 		} = this.state;
 
-		if ( searchText.length > 0 ) {
+		if ( !searchState && searchText.length > 0 ) {
 			this.setState({
-				searchState: true
+				searchState: true,
+				defaultState: false
 			});
-			dispatch(GetMaterial(searchText)).then( () => {
+			dispatch(GetMaterial({
+				searchText,
+				page
+			})).then( () => {
 				this.setState({
 					searchState: false
 				});
@@ -60,7 +70,7 @@ class PageSearch extends Component {
 			});
 		}
 	}
-	SearchItems ( results ) {
+	SearchItems ( results, totalResults ) {
 		let items = [];
 
 		results.forEach( ( result, index ) => {
@@ -73,19 +83,50 @@ class PageSearch extends Component {
 			</div>);
 		});
 
-		return items;
+		return <div
+		    className = "page-search-items-and-pagination">
+			<div
+			    className = "page-search-items">
+			    {items}
+			</div>
+			<div
+			    className = "page-search-pagination">
+				<Pagination
+					onChange = { this.onPaginationChange }
+					maxPage = { Math.ceil(totalResults / 20) }
+					/>
+			</div>
+		</div>;
 	}
-	render () {
+	onPaginationChange ( page ) {
+		this.onSearch(page);
+	}
+	searchContent () {
 		let {
 			GetMaterial,
 			GetTotalResults
 		} = this.props;
 		let {
-			searchState
+			searchState,
+			defaultState
 		} = this.state;
+		let searchContent = "";
 
-		console.log("GetTotalResults: ", GetTotalResults);
+		if ( !defaultState || GetMaterial.length > 0 ) {
+			if ( searchState ) {
+				searchContent = <div className = "loading">Loading</div>;
+			} else {
+				if ( GetMaterial.length > 0 ) {
+					searchContent = this.SearchItems(GetMaterial, GetTotalResults);
+				} else {
+					searchContent = <div className = "error">没有结果，请稍候再试，谢谢</div>;
+				}
+			}
+		}
 
+		return searchContent;
+	}
+	render () {
 		return <div
 		    className = "search-page">
 		    <div
@@ -93,6 +134,7 @@ class PageSearch extends Component {
 				<SearchInput
 					onChange = { this.onChange }
 					onSubmit = { this.onSearch }
+					placeholder = "搜索 物品名称"
 					/>
 				<div
 				    className = "search-input-button"
@@ -102,7 +144,7 @@ class PageSearch extends Component {
 			</div>
 			<div
 			    className = "search-results">
-			    { searchState ? <div className = "loading">Loading</div> : GetMaterial.length > 0 ? this.SearchItems(GetMaterial) : <div className = "error">没有结果，请稍候再试，谢谢</div> }
+			    { this.searchContent() }
 			</div>
 		</div>;
 	}

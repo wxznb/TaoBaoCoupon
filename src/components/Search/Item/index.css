@@ -39,13 +39,16 @@
 	text-overflow: ellipsis;
 }
 .search-item-coupon-info-and-time {
-	display: flex;
+	/* display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-between; */
 }
 .effective-date {
 	white-space: nowrap;
 	min-width: 0;
+	font-size: 13px;
+	line-height: 16px;
+	color: darkgray;
 }
 .search-item-price {
 	display: flex;

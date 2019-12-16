@@ -14,10 +14,14 @@ const getTotalResults = data => ({
 	data
 });
 
-const GetMaterial = ( queryValue ) => dispatch => {
+const GetMaterial = ( {
+	searchText,
+	page
+} ) => dispatch => {
 	return new Promise(( resolve, reject ) => {
 		http.get(`tbk/DgOptimusMaterial`, {
-			q: queryValue
+			q: searchText,
+			page_no: page
 		}).then( (data) => {
 			console.log("resolve");
 			if ( !!data.data ) {

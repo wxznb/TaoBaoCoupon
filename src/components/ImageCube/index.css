@@ -10,40 +10,39 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: block;
-    min-width: 100%;
-    min-height: 100%;
-    width: unset;
 }
-.components-imagecube::before {
+.components-imagecube-loading::before {
     content: " ";
-    background: lightgray;
+    background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 1;
+    background-size: 400% 100%;
 }
-.components-imagecube::after {
+.components-imagecube-loading::after {
     content: " ";
-    background: linear-gradient(45deg, #e66465, #9198e5);
+    background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 2;
-    animation: backgroundLoading 2s infinite cubic-bezier(0.1, 0.25, 0.25, 0.1);
+    background-size: 400% 100%;
+    animation: backgroundLoading 1.6s infinite cubic-bezier(0.1, 0.25, 0.25, 0.1);
 }
 
 @keyframes backgroundLoading {
     0% {
-        transform: translate(-100%, 0);
+        background-position-x: -20%;
     }
     50% {
-        transform: translate(100%, 0);
+        background-position-x: 70%;
     }
     100% {
-        transform: translate(-100%, 0);
+        background-position-x: -20%;
     }
 }

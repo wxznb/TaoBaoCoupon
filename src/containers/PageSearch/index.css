@@ -19,16 +19,7 @@
 }
 
 .search-results {
-	overflow-x: hidden;
-	overflow-y: auto;
-	min-height: 0;
-	height: 100%;
-	width: 98%;
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	flex-wrap: wrap;
-	padding: 0 1%;
+	width: 100%;
 }
 .search-result {
 	width: 24%;
@@ -43,4 +34,22 @@
 .error {
 	font-size: 20px;
 	padding: 15px;
+}
+.page-search-items-and-pagination {
+	width: 100%;
+}
+.page-search-items {
+	overflow-x: hidden;
+	overflow-y: auto;
+	min-height: 0;
+	height: 100%;
+	width: 98%;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	padding: 0 1%;
+}
+.page-search-pagination {
+	width: 100%;
 }
