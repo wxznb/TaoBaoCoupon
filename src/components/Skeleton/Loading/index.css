@@ -1,0 +1,25 @@
+.components-skeleton-loading {
+    position: relative;
+    width: 100%;
+    padding: 100% 0 0 0;
+}
+.components-skeleton-loading::before {
+    position: absolute;
+    content: " ";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+    background-size: 400% 100%;
+    animation: skeletonLoading 1.6s infinite cubic-bezier(0.1, 0.25, 0.25, 0.1);
+}
+
+@keyframes skeletonLoading {
+    from {
+        background-position-x: 70%;
+    }
+    to {
+        background-position-x: -20%;
+    }
+}

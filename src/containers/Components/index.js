@@ -3,7 +3,8 @@ import React, {
 } from "react";
 import {
     Pagination,
-    ImageCube
+    ImageCube,
+    SkeletonSearchItem
 } from "@/components";
 import "./index.css";
 
@@ -25,6 +26,8 @@ class Components extends Component {
             <Pagination
                 onChange = { this.paginationOnChange }
                 maxPage = { 50 }
+                />
+            <SkeletonSearchItem
                 />
         </div>
     }

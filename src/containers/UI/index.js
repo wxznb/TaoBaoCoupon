@@ -3,7 +3,8 @@ import React, {
 } from "react";
 import {
     Image,
-    Input
+    Input,
+    Loading
 } from "@/UI";
 import "./index.css";
 
@@ -17,6 +18,8 @@ class UI extends Component {
             <Image
                 />
             <Input
+                />
+            <Loading
                 />
         </div>
     }

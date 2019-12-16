@@ -29,7 +29,14 @@ const GetMaterial = ( {
 				dispatch(getTotalResults(data.data.total_results));
 				resolve();
 			} else {
-				reject();
+				dispatch(GetMaterial({
+					searchText,
+					page
+				})).then(() => {
+					resolve()
+				}, () => {
+					reject();
+				});
 			}
 		}, () => {
 			console.log("reject");

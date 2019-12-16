@@ -1,0 +1,37 @@
+.skeleton-search-item {
+    padding: 1%;
+}
+.skeleton-search-item-small-images {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0.5% 0 0 0;
+}
+.skeleton-search-item-small-image {
+    width: 25%;
+    margin: 0 0.05%;
+}
+.skeleton-search-item-text1 {
+    width: 86%;
+    height: 20px;
+    overflow: hidden;
+    margin: 1% 0;
+}
+.skeleton-search-item-text2 {
+    width: 73%;
+    height: 20px;
+    overflow: hidden;
+    margin: 0 0 1% 0;
+}
+.skeleton-search-item-text3 {
+    width: 30%;
+    height: 20px;
+    overflow: hidden;
+    margin: 0 0 1% 0;
+}
+.skeleton-search-item-text4 {
+    width: 58%;
+    height: 20px;
+    overflow: hidden;
+    margin: 0 0 1% 0;
+}

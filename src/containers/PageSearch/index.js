@@ -4,7 +4,8 @@ import React, {
 import {
 	SearchInput,
 	SearchItem,
-	Pagination
+	Pagination,
+	SkeletonSearchItem
 } from "@/components";
 import {
 	connect
@@ -114,7 +115,10 @@ class PageSearch extends Component {
 
 		if ( !defaultState || GetMaterial.length > 0 ) {
 			if ( searchState ) {
-				searchContent = <div className = "loading">Loading</div>;
+				searchContent = <div className = "loading">
+				    <SkeletonSearchItem
+					    />
+				</div>;
 			} else {
 				if ( GetMaterial.length > 0 ) {
 					searchContent = this.SearchItems(GetMaterial, GetTotalResults);
