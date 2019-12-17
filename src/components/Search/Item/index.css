@@ -16,7 +16,7 @@
 	flex-direction: row;
 }
 .search-item-small-image {
-	width: 33%;
+	width: 24.125%;
 	margin: 0 0.5% 0 0;
 }
 .search-item-small-image:last-child {
@@ -55,10 +55,14 @@
 }
 .search-item-price > div {
 	padding: 0 0 0 5px;
-	text-decoration: line-through
+	text-decoration: line-through;
+	color: black;
 }
 .search-item-price > div:last-child {
 	text-decoration: unset;
+	color: red;
+	font-weight: bolder;
+	font-size: 17px;
 }
 .search-item-reserve-price {
 }

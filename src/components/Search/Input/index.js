@@ -33,7 +33,7 @@ class SearchInput extends Component {
 	render () {
 		return <Input
 		    type = "search"
-		    placeholder = "搜索"
+		    placeholder = { this.props.placeholder || "搜索" }
 		    onInput = { this.onInput }
 			onChange = { this.onChange }
 			onSubmit = { this.onSubmit }

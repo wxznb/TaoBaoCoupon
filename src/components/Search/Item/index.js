@@ -54,6 +54,10 @@ class SearchItem extends Component {
 			coupon_start_fee,
 			coupon_amount
 		} = item;
+		reserve_price = parseInt(reserve_price);
+		zk_final_price = parseInt(zk_final_price);
+		coupon_start_fee = parseInt(coupon_start_fee);
+		coupon_amount = parseInt(coupon_amount);
 
 		let share_url = `https:${coupon_share_url}`;
 		let zk_price = zk_final_price;

@@ -30,6 +30,7 @@ class PageSearch extends Component {
 		this.onChange = this.onChange.bind(this);
 		this.onSearch = this.onSearch.bind(this);
 		this.searchContent = this.searchContent.bind(this);
+		this.pagination = this.pagination.bind(this);
 		this.onPaginationChange = this.onPaginationChange.bind(this);
 	}
 	onInput ( event ) {
@@ -71,7 +72,7 @@ class PageSearch extends Component {
 			});
 		}
 	}
-	SearchItems ( results, totalResults ) {
+	SearchItems ( results ) {
 		let items = [];
 
 		results.forEach( ( result, index ) => {
@@ -90,13 +91,6 @@ class PageSearch extends Component {
 			    className = "page-search-items">
 			    {items}
 			</div>
-			<div
-			    className = "page-search-pagination">
-				<Pagination
-					onChange = { this.onPaginationChange }
-					maxPage = { Math.ceil(totalResults / 20) }
-					/>
-			</div>
 		</div>;
 	}
 	onPaginationChange ( page ) {
@@ -104,8 +98,7 @@ class PageSearch extends Component {
 	}
 	searchContent () {
 		let {
-			GetMaterial,
-			GetTotalResults
+			GetMaterial
 		} = this.props;
 		let {
 			searchState,
@@ -115,13 +108,28 @@ class PageSearch extends Component {
 
 		if ( !defaultState || GetMaterial.length > 0 ) {
 			if ( searchState ) {
-				searchContent = <div className = "loading">
-				    <SkeletonSearchItem
-					    />
+				searchContent = <div 
+					className = "page-search-skeletons">
+					<div className = "page-search-skeleton">
+						<SkeletonSearchItem
+							/>
+					</div>
+					<div className = "page-search-skeleton">
+						<SkeletonSearchItem
+							/>
+					</div>
+					<div className = "page-search-skeleton">
+						<SkeletonSearchItem
+							/>
+					</div>
+					<div className = "page-search-skeleton">
+						<SkeletonSearchItem
+							/>
+					</div>
 				</div>;
 			} else {
 				if ( GetMaterial.length > 0 ) {
-					searchContent = this.SearchItems(GetMaterial, GetTotalResults);
+					searchContent = this.SearchItems(GetMaterial);
 				} else {
 					searchContent = <div className = "error">没有结果，请稍候再试，谢谢</div>;
 				}
@@ -129,6 +137,25 @@ class PageSearch extends Component {
 		}
 
 		return searchContent;
+	}
+	pagination () {
+		let pagination = "";
+		let {
+			GetTotalResults,
+			GetMaterial
+		} = this.props;
+
+		if ( GetMaterial.length > 0 ) {
+			pagination = <div
+				className = "page-search-pagination">
+				<Pagination
+					onChange = { this.onPaginationChange }
+					maxPage = { Math.ceil(GetTotalResults / 20) }
+					/>
+			</div>;
+		}
+
+		return pagination;
 	}
 	render () {
 		return <div
@@ -148,7 +175,8 @@ class PageSearch extends Component {
 			</div>
 			<div
 			    className = "search-results">
-			    { this.searchContent() }
+				{ this.searchContent() }
+				{ this.pagination() }
 			</div>
 		</div>;
 	}

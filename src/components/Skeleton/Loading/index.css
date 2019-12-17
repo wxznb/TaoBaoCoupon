@@ -17,7 +17,7 @@
 
 @keyframes skeletonLoading {
     from {
-        background-position-x: 70%;
+        background-position-x: 110%;
     }
     to {
         background-position-x: -20%;
